@@ -25,6 +25,9 @@ jobs:
     - name: Setup git credentials
       uses: cloudbees-io/configure-git-global-credentials@v1
 
+    - name: Dummy wait
+      run: sleep 20
+
     - id: gomod-branch-check
       name: Verify go.mod calculi-corp deps point at their repo's default branch
       uses: calculi-corp/cb-internal-shared-actions/gomod-branch-check@v8
