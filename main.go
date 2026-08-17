@@ -25,7 +25,7 @@ func main() {
 
 	rox := server.NewRox()
 
-	// Register the flags container with CloudBees Unify
+	// Register the flags container with CloudBees Unify.
 	rox.RegisterWithEmptyNamespace(flags)
 
 	// Setup the feature management environment key
