@@ -1,0 +1,36 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: dummy-build
+
+on:
+  push:
+    branches:
+      - "*"
+  workflow_dispatch: {}
+
+permissions:
+  scm-token-own: read
+  scm-token-org: read
+  id-token: write
+
+jobs:
+  dummy:
+    steps:
+    - name: Checkout
+      uses: cloudbees-io/checkout@v1
+      with:
+        ref: ${{ cloudbees.scm.ref }}
+        fetch-depth: 0
+
+    - name: Setup git credentials
+      uses: cloudbees-io/configure-git-global-credentials@v1
+
+    - name: Dummy wait
+      uses: docker://alpine:3.20.2
+      run: |
+        echo "Waiting for 10 seconds..."
+        sleep 10
+
+    - id: gomod-branch-check
+      name: Verify go.mod calculi-corp deps point at their repo's default branch
+      uses: calculi-corp/cb-internal-shared-actions/gomod-branch-check@v8
