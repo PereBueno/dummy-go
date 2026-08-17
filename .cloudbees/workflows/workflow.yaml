@@ -26,7 +26,7 @@ jobs:
       uses: cloudbees-io/configure-git-global-credentials@v1
 
     - name: Dummy wait
-      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/containers/container-gh-cli-plus-gh-token:0.0.42
+      uses: docker://alpine:3.20.2
       run: |
         echo "Waiting for 20 seconds..."
         sleep 20
