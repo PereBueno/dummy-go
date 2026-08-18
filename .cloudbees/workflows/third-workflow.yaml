@@ -28,8 +28,8 @@ jobs:
     - name: Dummy wait
       uses: docker://alpine:3.20.2
       run: |
-        echo "Waiting for 20 seconds..."
-        sleep 20
+        echo "Waiting for 15 seconds..."
+        sleep 15
 
     - id: gomod-branch-check
       name: Verify go.mod calculi-corp deps point at their repo's default branch

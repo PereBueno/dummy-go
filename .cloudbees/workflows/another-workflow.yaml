@@ -28,8 +28,13 @@ jobs:
     - name: Dummy wait
       uses: docker://alpine:3.20.2
       run: |
-        echo "Waiting for 20 seconds..."
-        sleep 20
+        FAIL=$(shuf -i 0-9 -n 1)
+        if [ "$FAIL" -eq "0" ]; then
+          echo "Failing the job..."
+          exit 1
+        fi
+        echo "Waiting for 10 seconds..."
+        sleep 10
 
     - id: gomod-branch-check
       name: Verify go.mod calculi-corp deps point at their repo's default branch
